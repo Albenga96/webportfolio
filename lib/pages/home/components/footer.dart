@@ -138,7 +138,7 @@ Widget _buildUi(double width, BuildContext context) {
                   Padding(
                     padding: EdgeInsets.only(bottom: 8.0),
                     child: Text(
-                      "Copyright (c) 2021 Michele Harrington. All rights Reserved",
+                      "Copyright (c) 2021 Alberto Ferroni. All rights Reserved",
                       style: TextStyle(
                         color: kCaptionColor,
                       ),

@@ -26,6 +26,10 @@ List<Skill> skills = [
     skill: "Deep Learning",
     percentage: 78,
   ),
+  Skill(
+    skill: "Reinforcement Learning",
+    percentage: 30,
+  ),
 ];
 
 class SkillSection extends StatelessWidget {

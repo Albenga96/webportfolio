@@ -119,7 +119,7 @@ class WebsiteAd extends StatelessWidget {
                                   onPressed: () {},
                                   child: Center(
                                     child: Text(
-                                      "NEXT APP",
+                                      "NEXT WEBSITE",
                                       style: TextStyle(
                                         color: kPrimaryColor,
                                         fontSize: 13.0,
