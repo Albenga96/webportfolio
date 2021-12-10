@@ -28,7 +28,7 @@ List<Skill> skills = [
   ),
   Skill(
     skill: "Reinforcement Learning",
-    percentage: 30,
+    percentage: 50,
   ),
 ];
 

@@ -9,27 +9,27 @@ import 'package:web_portfolio/utils/screen_helper.dart';
 final List<Education> educationList = [
   Education(
     description:
-        "This is a sample education and details about it is stated below. This is a sample education and details about it is stated below",
+        "Research Fellow in Data-Driven technologies, such as Machine Learning, Deep Learning and innovative deterministic approach.",
     linkName: "www.albertoferroni.com",
-    period: "2019 - PRESENT",
+    period: "2020 - 2021",
   ),
   Education(
     description:
-        "This is a sample education and details about it is stated below.This is a sample education and details about it is stated below",
+        "Self-taught app developer, through online courses, personal projects and a lot of passion.",
     linkName: "www.albertoferroni.com",
-    period: "2018 - 2019",
+    period: "2018 - PRESENT",
   ),
   Education(
     description:
-        "This is a sample education and details about it is stated below. This is a sample education and details about it is stated below",
+        "Master's degree in Automation and Robotics Engineering form the University of Florence.",
     linkName: "www.albertoferroni.com",
-    period: "2017 - 2018",
+    period: "2018 - 2020",
   ),
   Education(
     description:
-        "This is a sample education and details about it is stated below. This is a sample education and details about it is stated below",
+        "Bachelor's degree in Electric and Automation Engineering form the University of Florence.",
     linkName: "www.albertoferroni.com",
-    period: "2016 - 2017",
+    period: "2015 - 2018",
   ),
 ];
 
@@ -72,7 +72,7 @@ class EducationSection extends StatelessWidget {
                 Container(
                   constraints: BoxConstraints(maxWidth: 400.0),
                   child: Text(
-                    "A full stack all round developer that does all the job he needs to do at all times. Actually this is a false statement",
+                    "A Data-Driven developer that does all the job he needs to do at all times. Also passionate about the world of app development with flutter.",
                     style: TextStyle(
                       color: Colors.white,
                       height: 1.5,

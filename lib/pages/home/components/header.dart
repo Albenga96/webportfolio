@@ -3,10 +3,20 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:responsive_framework/responsive_framework.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:web_portfolio/models/header_item.dart';
 import 'package:web_portfolio/utils/constants.dart';
 import 'package:web_portfolio/utils/globals.dart';
 import 'package:web_portfolio/utils/screen_helper.dart';
+
+_launchURL(String toMailId, String subject, String body) async {
+  var url = 'mailto:$toMailId?subject=$subject&body=$body';
+  if (await canLaunch(url)) {
+    await launch(url);
+  } else {
+    throw 'Could not launch $url';
+  }
+}
 
 List<HeaderItem> headerItems = [
   HeaderItem(
@@ -20,7 +30,10 @@ List<HeaderItem> headerItems = [
   HeaderItem(title: "BLOGS", onTap: () {}),
   HeaderItem(
     title: "HIRE ME",
-    onTap: () {},
+    onTap: () {
+      _launchURL(
+          "albertoferroni.af@gmail.com", "HIRE ME - Portfolio", "Hi Alberto,");
+    },
     isButton: true,
   ),
 ];
@@ -37,7 +50,7 @@ class HeaderLogo extends StatelessWidget {
             text: TextSpan(
               children: [
                 TextSpan(
-                  text: "M",
+                  text: "AF",
                   style: GoogleFonts.oswald(
                     color: Colors.white,
                     fontSize: 32.0,
