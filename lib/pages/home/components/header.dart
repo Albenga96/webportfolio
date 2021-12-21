@@ -1,42 +1,17 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_icons/flutter_icons.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:responsive_framework/responsive_framework.dart';
+import 'package:responsive_framework/responsive_framework.dart' as rsp;
 import 'package:url_launcher/url_launcher.dart';
+import 'package:web_portfolio/controllers/menu_controller.dart';
 import 'package:web_portfolio/models/header_item.dart';
+import 'package:web_portfolio/pages/home/components/menu_item.dart';
 import 'package:web_portfolio/utils/constants.dart';
 import 'package:web_portfolio/utils/globals.dart';
 import 'package:web_portfolio/utils/screen_helper.dart';
-
-_launchURL(String toMailId, String subject, String body) async {
-  var url = 'mailto:$toMailId?subject=$subject&body=$body';
-  if (await canLaunch(url)) {
-    await launch(url);
-  } else {
-    throw 'Could not launch $url';
-  }
-}
-
-List<HeaderItem> headerItems = [
-  HeaderItem(
-    title: "HOME",
-    onTap: () {},
-  ),
-  HeaderItem(title: "MY INTRO", onTap: () {}),
-  HeaderItem(title: "SERVICES", onTap: () {}),
-  HeaderItem(title: "PORTFOLIO", onTap: () {}),
-  HeaderItem(title: "TESTIMONIALS", onTap: () {}),
-  HeaderItem(title: "BLOGS", onTap: () {}),
-  HeaderItem(
-    title: "HIRE ME",
-    onTap: () {
-      _launchURL(
-          "albertoferroni.af@gmail.com", "HIRE ME - Portfolio", "Hi Alberto,");
-    },
-    isButton: true,
-  ),
-];
 
 class HeaderLogo extends StatelessWidget {
   @override
@@ -75,60 +50,28 @@ class HeaderLogo extends StatelessWidget {
 }
 
 class HeaderRow extends StatelessWidget {
+  final MenuController _controller = Get.put(MenuController());
   @override
   Widget build(BuildContext context) {
-    return ResponsiveVisibility(
-      visible: false,
-      visibleWhen: [
-        Condition.largerThan(name: MOBILE),
-      ],
-      child: Row(
-        children: headerItems
-            .map(
-              (item) => item.isButton
-                  ? MouseRegion(
-                      cursor: SystemMouseCursors.click,
-                      child: Container(
-                        decoration: BoxDecoration(
-                          color: kDangerColor,
-                          borderRadius: BorderRadius.circular(8.0),
-                        ),
-                        padding: EdgeInsets.symmetric(
-                            horizontal: 20.0, vertical: 5.0),
-                        child: TextButton(
-                          onPressed: item.onTap,
-                          child: Text(
-                            item.title,
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 13.0,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ),
-                      ),
-                    )
-                  : MouseRegion(
-                      cursor: SystemMouseCursors.click,
-                      child: Container(
-                        margin: EdgeInsets.only(right: 30.0),
-                        child: GestureDetector(
-                          onTap: item.onTap,
-                          child: Text(
-                            item.title,
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 13.0,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ),
-                      ),
+    return rsp.ResponsiveVisibility(
+        visible: false,
+        visibleWhen: [
+          rsp.Condition.largerThan(name: rsp.MOBILE),
+        ],
+        child: Obx(
+          () => !ScreenHelper.isMobile(context)
+              ? Row(
+                  children: List.generate(
+                    _controller.menuItems.length,
+                    (index) => MenuItem(
+                      text: _controller.menuItems[index],
+                      isActive: index == _controller.selectedIndex,
+                      press: () => _controller.setMenuIndex(index),
                     ),
-            )
-            .toList(),
-      ),
-    );
+                  ),
+                )
+              : Container(),
+        ));
   }
 }
 

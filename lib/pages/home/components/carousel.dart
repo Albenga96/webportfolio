@@ -32,6 +32,7 @@ class Carousel extends StatelessWidget {
                 (index) => Builder(
                   builder: (BuildContext context) {
                     return Container(
+                      color: kBackgroundColor,
                       constraints: BoxConstraints(
                         minHeight: carouselContainerHeight,
                       ),
