@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:web_portfolio/utils/constants.dart';
+import 'package:web_portfolio/utils/screen_helper.dart';
 
 class MenuItem extends StatefulWidget {
   const MenuItem({
@@ -40,8 +41,9 @@ class _MenuItemState extends State<MenuItem> {
       },
       child: AnimatedContainer(
         duration: Duration(milliseconds: 200),
-        margin: EdgeInsets.symmetric(horizontal: 20.0),
-        padding: EdgeInsets.symmetric(vertical: 20.0 / 2),
+        margin: EdgeInsets.symmetric(
+            horizontal: !ScreenHelper.isMobile(context) ? 20.0 : 8.0),
+        padding: EdgeInsets.symmetric(vertical: 12.0),
         decoration: BoxDecoration(
           border: Border(
             bottom: BorderSide(color: _borderColor(), width: 3),
